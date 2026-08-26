@@ -11,6 +11,6 @@
 //  but do not store submissions.
 // ============================================================
 window.TLC_CONFIG = {
-  SUPABASE_URL: "",
-  SUPABASE_ANON_KEY: ""
+  SUPABASE_URL: "tvnthcyqplkpmhidpvmu",
+  SUPABASE_ANON_KEY: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR2bnRoY3lxcGxrcG1oaWRwdm11Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA5ODgzMTEsImV4cCI6MjA5NjU2NDMxMX0.bFOFHv2ZWsFPmlVh-w0aDPEW9TmYdzhBte0aMMEJXuk"
 };
