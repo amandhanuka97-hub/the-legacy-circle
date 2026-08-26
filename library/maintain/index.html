@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Maintain · The Library · The Legacy Circle</title>
-<meta name="description" content="How money stays secured and on course: reviews, rebalancing, tax hygiene, exit discipline, nominations and succession. The Maintenance room of The Legacy Circle Library.">
+<meta name="description" content="How money stays secured and on course: the annual review, rebalancing, tax hygiene, exit discipline and succession. The Maintenance room of the Library.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -303,6 +303,58 @@ footer{background:var(--ink);padding:64px 0 52px;border-top:1px solid rgba(194,1
 .wing-switch a:hover{color:var(--brass)}
 .wing-switch a.on{background:var(--ivory-2);color:var(--ink)}
 
+/* ---------- hub: section headers ---------- */
+.hub-section{padding:80px 0 72px}
+.hub-section + .hub-section{padding-top:0}
+.hub-head{display:flex;align-items:baseline;justify-content:space-between;gap:18px;
+  flex-wrap:wrap;margin-bottom:34px}
+.hub-title{font-family:'Marcellus',serif;font-size:12px;letter-spacing:.32em;
+  text-transform:uppercase;color:var(--brass-dim);display:flex;align-items:center;gap:18px;flex:1}
+.hub-title::after{content:"";flex:1;height:1px;background:var(--rule)}
+.hub-note{font-size:13px;color:#6B7A70}
+
+/* ---------- hub: essentials plate (lead + stack) ---------- */
+.ess{display:grid;grid-template-columns:1.2fr 1fr;border:1px solid var(--rule)}
+.ess-lead{padding:46px 44px;display:flex;flex-direction:column;gap:14px;
+  text-decoration:none;transition:background .25s ease}
+a.ess-lead:hover{background:var(--ivory-2)}
+.ess-k{font-family:'Marcellus',serif;font-size:10.5px;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--brass-dim)}
+.ess-lead h3{font-family:'Cormorant Garamond',serif;font-weight:500;
+  font-size:clamp(26px,3.4vw,36px);line-height:1.16;color:var(--ink)}
+.ess-lead p{font-size:15px;color:#4A5850;flex:1}
+.ess-meta{font-family:'Marcellus',serif;font-size:10.5px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--sage)}
+.ess-stack{border-left:1px solid var(--rule);display:flex;flex-direction:column}
+.ess-row{flex:1;display:flex;flex-direction:column;gap:6px;justify-content:center;
+  padding:22px 30px;border-top:1px solid var(--rule);
+  text-decoration:none;transition:background .25s ease}
+.ess-row:first-child{border-top:none}
+a.ess-row:hover{background:var(--ivory-2)}
+.ess-row h4{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:19px;
+  line-height:1.25;color:var(--ink)}
+.ess-row .ess-meta{margin-top:2px}
+.ess .slated h3,.ess .slated h4{color:#7A877E}
+@media(max-width:860px){
+  .ess{grid-template-columns:1fr}
+  .ess-stack{border-left:none;border-top:1px solid var(--rule)}
+  .ess-lead{padding:36px 30px}
+}
+
+/* ---------- hub: latest band (activates once a room holds 6+ live lessons) ---------- */
+.latest-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--rule)}
+.latest-card{padding:28px 26px;display:flex;flex-direction:column;gap:8px;
+  text-decoration:none;border-left:1px solid var(--rule);transition:background .25s ease}
+.latest-card:first-child{border-left:none}
+a.latest-card:hover{background:var(--ivory-2)}
+.latest-card h4{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:19px;
+  line-height:1.25;color:var(--ink)}
+@media(max-width:860px){
+  .latest-grid{grid-template-columns:1fr}
+  .latest-card{border-left:none;border-top:1px solid var(--rule)}
+  .latest-card:first-child{border-top:none}
+}
+
 </style>
 <noscript><style>.reveal{opacity:1 !important;transform:none !important}</style></noscript>
 </head>
@@ -336,10 +388,55 @@ footer{background:var(--ink);padding:64px 0 52px;border-top:1px solid rgba(194,1
   </div>
 </div>
 
-<section class="wing-section" style="border-bottom:none">
+<section class="hub-section">
   <div class="wrap">
-    <p class="wing-sub reveal">Building it is half the work. Keeping it disciplined, tax-clean and inheritable is the other half.</p>
-    <div class="two-col reveal">
+    <div class="hub-head reveal">
+      <span class="hub-title">The Essentials · Begin Here</span>
+      <span class="hub-note">Five disciplines, chosen once, kept constant.</span>
+    </div>
+    <div class="reveal">
+<div class="ess">
+<div class="ess-lead slated">
+  <span class="ess-k">Essential i · Discipline</span>
+  <h3>The annual review: the one-page checklist.</h3>
+  <p>The yearly hour that keeps a portfolio honest: what to check, what to ignore, and what to change. The first Maintain lesson, now in production.</p>
+  <span class="ess-meta">First lesson in production</span>
+</div>
+  <div class="ess-stack">
+<div class="ess-row slated">
+  <span class="ess-k">Essential ii · Rebalancing</span>
+  <h4>Rules over feelings: trimming winners, feeding laggards</h4>
+  <span class="ess-meta">In the writing room</span>
+</div>
+<div class="ess-row slated">
+  <span class="ess-k">Essential iii · Tax</span>
+  <h4>Tax hygiene: holding periods and harvesting</h4>
+  <span class="ess-meta">In the writing room</span>
+</div>
+<div class="ess-row slated">
+  <span class="ess-k">Essential iv · Exits</span>
+  <h4>Exit discipline: know why you would sell</h4>
+  <span class="ess-meta">In the writing room</span>
+</div>
+<div class="ess-row slated">
+  <span class="ess-k">Essential v · Succession</span>
+  <h4>Nominations, wills and the next generation</h4>
+  <span class="ess-meta">Next in production</span>
+</div>
+  </div>
+</div>
+    </div>
+  </div>
+</section>
+
+<section class="hub-section">
+  <div class="wrap">
+    <div class="hub-head reveal">
+      <span class="hub-title">Every Chapter · The Full Shelf</span>
+      <span class="hub-note">Building it is half the work. Keeping it is the other half.</span>
+    </div>
+    <div class="reveal">
+<div class="two-col">
       <div>
         <div class="chapter">
           <h3>The annual review</h3>
@@ -369,6 +466,7 @@ footer{background:var(--ink);padding:64px 0 52px;border-top:1px solid rgba(194,1
           <span class="soon">Next in production</span>
         </div>
       </div>
+    </div>
     </div>
   </div>
 </section>
