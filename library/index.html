@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Library · The Legacy Circle</title>
+<meta name="description" content="Where should your next rupee go? Answer three questions and the shelf shows every Growth, Income and Asset-backed option that exists for your window, in plain language. Free, one lesson a week.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   The Legacy Circle · The Library (single-page edition, v2)
+   Personalisation · The Shelf (45 options) · The Execution · Closed-door
+   ============================================================ */
+:root{
+  --ink:#0E1F1A;
+  --theatre:#152B23;
+  --ivory:#F5F1E6;
+  --ivory-2:#EDE7D7;
+  --brass:#C2A45C;
+  --brass-dim:#9A824A;
+  --body-dark:#28362F;
+  --body-light:#C9D4CC;
+  --sage:#8FA69A;
+  --rule:rgba(194,164,92,.45);
+  --rule-soft:rgba(194,164,92,.22);
+  --maxw:1060px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  background:var(--ivory);color:var(--body-dark);
+  font-weight:400;line-height:1.7;-webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--brass);color:var(--ink)}
+a{color:inherit}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+.btn{
+  display:inline-block;font-family:'Marcellus',serif;
+  font-size:13px;letter-spacing:.22em;text-transform:uppercase;
+  padding:16px 32px;border:1px solid var(--brass);
+  color:var(--brass);text-decoration:none;background:transparent;
+  cursor:pointer;transition:background .25s ease,color .25s ease;
+}
+.btn:hover{background:var(--brass);color:var(--ink)}
+.btn.solid{background:var(--brass);color:var(--ink)}
+.btn.solid:hover{background:#D3B76E}
+.btn:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+}
+.hid{display:none!important}
+
+.eyebrow{
+  font-family:'Marcellus',serif;font-size:12px;letter-spacing:.32em;
+  text-transform:uppercase;color:var(--brass-dim);
+  display:flex;align-items:center;gap:18px;margin-bottom:24px;
+}
+.eyebrow::after{content:"";flex:1;height:1px;background:var(--rule)}
+.on-green .eyebrow{color:var(--brass)}
+h2{
+  font-family:'Cormorant Garamond',serif;font-weight:500;
+  font-size:clamp(28px,4.2vw,42px);line-height:1.18;
+  color:var(--ink);max-width:680px;letter-spacing:.005em;
+}
+.on-green h2{color:var(--ivory)}
+.lede{max-width:600px;margin-top:18px;font-size:16.5px;color:#4A5850}
+.on-green .lede{color:var(--body-light)}
+
+/* ---------- nav ---------- */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  background:rgba(14,31,26,.92);backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(194,164,92,.25);
+}
+.nav-in{max-width:var(--maxw);margin:0 auto;padding:16px 24px;
+  display:flex;align-items:center;justify-content:space-between}
+.wordmark{
+  font-family:'Marcellus',serif;color:var(--ivory);
+  font-size:14px;letter-spacing:.3em;text-transform:uppercase;text-decoration:none;
+}
+.wordmark span{color:var(--brass)}
+.nav-links{display:flex;gap:30px;align-items:center}
+.nav-links a{
+  font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--body-light);text-decoration:none;transition:color .2s;
+}
+.nav-links a:hover{color:var(--brass)}
+.nav-links a.here{color:var(--brass)}
+.nav-cta{border:1px solid var(--brass);color:var(--brass)!important;padding:9px 18px}
+.nav-cta:hover{background:var(--brass);color:var(--ink)!important}
+@media(max-width:760px){.nav-links a:not(.nav-cta){display:none}}
+
+/* ---------- masthead ---------- */
+.masthead{
+  background:var(--ink);color:var(--ivory);
+  padding:150px 0 76px;position:relative;overflow:hidden;
+}
+.masthead::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(ellipse 90% 60% at 50% 120%,rgba(194,164,92,.10),transparent 60%);
+  pointer-events:none;
+}
+.masthead .eyebrow{color:var(--brass)}
+.masthead h1{
+  font-family:'Cormorant Garamond',serif;font-weight:500;
+  font-size:clamp(34px,5.2vw,54px);line-height:1.15;max-width:760px;
+}
+.masthead h1 em{font-style:italic;color:var(--brass)}
+.masthead .lede{max-width:640px;color:var(--body-light);font-weight:300}
+.claims{
+  margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:0;max-width:820px;
+}
+.claim{border-left:1px solid rgba(194,164,92,.35);padding:4px 26px 4px 22px}
+.claim b{
+  font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:500;
+  font-size:22px;color:var(--brass);display:block;margin-bottom:4px;
+}
+.claim p{font-size:13.5px;color:var(--body-light)}
+@media(max-width:760px){.claims{grid-template-columns:1fr;row-gap:22px}}
+
+/* ---------- personalisation ---------- */
+.cal{background:var(--ivory-2);padding:84px 0}
+.cal-grid{
+  margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);
+  gap:38px;max-width:960px;
+}
+.cfield label{
+  display:block;font-family:'Marcellus',serif;font-size:11.5px;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--brass-dim);margin-bottom:10px;
+}
+.cfield select{
+  width:100%;background:transparent;border:none;
+  border-bottom:1px solid var(--rule);
+  padding:11px 26px 11px 2px;font-family:'Inter',sans-serif;font-size:16px;
+  color:var(--body-dark);border-radius:0;appearance:none;-webkit-appearance:none;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='11' height='7' viewBox='0 0 11 7'><path d='M1 1l4.5 4.5L10 1' fill='none' stroke='%239A824A' stroke-width='1.4'/></svg>");
+  background-repeat:no-repeat;background-position:right 4px center;cursor:pointer;
+}
+.cfield select:focus{outline:none;border-bottom-color:var(--brass)}
+.cal-out{margin-top:36px;display:flex;align-items:baseline;gap:22px;flex-wrap:wrap}
+.cal-line{
+  font-family:'Marcellus',serif;font-size:12px;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--brass-dim);
+}
+.cal-reset{
+  font-size:13px;color:#6B7A70;background:none;border:none;cursor:pointer;
+  font-family:'Inter',sans-serif;text-decoration:underline;text-underline-offset:3px;padding:0;
+}
+.cal-reset:hover{color:var(--brass-dim)}
+@media(max-width:760px){.cal-grid{grid-template-columns:1fr;gap:28px}}
+
+/* ---------- the shelf ---------- */
+.shelf{padding:88px 0 72px}
+.wing{margin-top:52px;border-top:1px solid var(--rule)}
+.wing:first-of-type{margin-top:56px}
+.wing-head{
+  width:100%;background:none;border:none;cursor:pointer;text-align:left;
+  display:grid;grid-template-columns:auto 1fr auto 24px;gap:20px;align-items:baseline;
+  padding:30px 0 24px;font-family:inherit;color:inherit;
+}
+.wing-head:focus-visible{outline:2px solid var(--brass);outline-offset:4px}
+.wing-roman{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:30px;color:var(--brass-dim);line-height:1}
+.wing-title{
+  font-family:'Cormorant Garamond',serif;font-weight:500;
+  font-size:clamp(26px,3.6vw,36px);color:var(--ink);line-height:1.1;
+}
+.wing-title small{
+  display:block;font-family:'Inter',sans-serif;font-size:14px;color:#4A5850;
+  margin-top:6px;font-weight:400;
+}
+.wing-count{
+  font-family:'Marcellus',serif;font-size:11px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--sage);white-space:nowrap;
+}
+.chev{
+  width:24px;height:24px;display:flex;align-items:center;justify-content:center;
+  color:var(--brass-dim);transition:transform .25s ease;
+}
+.wing[data-open="false"] .chev{transform:rotate(-90deg)}
+.wing[data-open="false"] .rows{display:none}
+.rows{padding-bottom:12px}
+.row{border-top:1px solid var(--rule-soft)}
+.row:first-child{border-top:none}
+.row-head{
+  width:100%;background:none;border:none;cursor:pointer;text-align:left;
+  display:grid;grid-template-columns:1fr auto 24px;gap:20px;align-items:center;
+  padding:16px 0;font-family:inherit;color:inherit;
+}
+.row-head:hover .r-name{color:var(--brass-dim)}
+.row-head:focus-visible{outline:2px solid var(--brass);outline-offset:2px}
+.r-name{
+  font-family:'Cormorant Garamond',serif;font-weight:600;font-size:20px;
+  color:var(--ink);line-height:1.25;transition:color .2s ease;
+}
+.r-group{
+  display:block;font-family:'Marcellus',serif;font-size:10.5px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--sage);margin-top:3px;
+}
+.r-pills{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.pill{
+  font-family:'Marcellus',serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  padding:5px 10px;border:1px solid var(--rule);color:var(--brass-dim);white-space:nowrap;
+}
+.pill.low{border-color:rgba(143,166,154,.6);color:#6B7A70}
+.pill.mid{border-color:var(--brass);color:var(--brass-dim)}
+.pill.high{background:var(--brass);border-color:var(--brass);color:var(--ink)}
+.pill.route{border-style:dashed}
+.row .chev{transform:rotate(-90deg)}
+.row[data-open="true"] .chev{transform:rotate(0)}
+.row-body{display:none;padding:2px 0 24px;max-width:720px}
+.row[data-open="true"] .row-body{display:block}
+.rb-k{
+  font-family:'Marcellus',serif;font-size:10.5px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--brass-dim);display:block;margin-bottom:3px;
+}
+.row-body p{font-size:14.5px;color:#4A5850}
+.row-body p + .rb-k{margin-top:14px}
+.rb-note{margin-top:14px;color:var(--brass-dim);font-style:italic;font-family:'Cormorant Garamond',serif;font-size:16px}
+.lesson-link{
+  display:inline-block;margin-top:14px;
+  font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px;
+  color:var(--ink);text-decoration:none;border-bottom:1px solid var(--brass);
+  padding-bottom:1px;transition:color .2s ease;
+}
+.lesson-link:hover{color:var(--brass-dim)}
+.l-meta{
+  display:block;font-family:'Marcellus',serif;font-size:10.5px;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--sage);margin-top:6px;
+}
+.wing-empty{padding:8px 0 28px;color:#6B7A70;font-style:italic;font-family:'Cormorant Garamond',serif;font-size:17px}
+@media(max-width:700px){
+  .wing-head{grid-template-columns:auto 1fr 24px}
+  .wing-count{grid-column:2;justify-self:start;margin-top:2px}
+  .row-head{grid-template-columns:1fr 24px;row-gap:10px}
+  .r-pills{grid-column:1/-1;justify-content:flex-start}
+}
+.shelf-disc{margin-top:44px;font-size:13px;color:#6B7A70;max-width:720px}
+.shelf-note{margin-top:40px}
+.shelf-note-in{
+  border:1px solid var(--rule);padding:28px 32px;
+  display:flex;justify-content:space-between;align-items:baseline;gap:24px;flex-wrap:wrap;
+}
+.shelf-note-in p{font-size:14.5px;color:#4A5850;max-width:640px}
+.shelf-note-in a{color:var(--brass-dim);text-decoration:underline;text-underline-offset:3px}
+
+/* ---------- the execution ---------- */
+.plan-band{background:var(--theatre);padding:92px 0}
+.phil-row{
+  margin-top:46px;display:grid;grid-template-columns:repeat(3,1fr);gap:0;
+  border:1px solid rgba(194,164,92,.35);
+}
+.phil{
+  display:block;padding:28px 30px;text-decoration:none;
+  border-left:1px solid rgba(194,164,92,.35);transition:background .25s ease;
+}
+.phil:first-child{border-left:none}
+a.phil:hover{background:rgba(194,164,92,.07)}
+.phil .r-k{
+  font-family:'Marcellus',serif;font-size:11px;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--brass);display:block;margin-bottom:8px;
+}
+.phil h4{
+  font-family:'Cormorant Garamond',serif;font-weight:600;font-size:21px;
+  color:var(--ivory);line-height:1.3;
+}
+.phil p{margin-top:8px;font-size:13.5px;color:var(--body-light)}
+.phil .l-meta{color:var(--sage);margin-top:12px}
+div.phil h4{color:#B7C4BB}
+@media(max-width:860px){.phil-row{grid-template-columns:1fr}.phil{border-left:none;border-top:1px solid rgba(194,164,92,.35)}.phil:first-child{border-top:none}}
+
+.model-grid{
+  margin-top:56px;display:grid;grid-template-columns:repeat(3,1fr);gap:0;
+  border:1px solid rgba(194,164,92,.35);
+}
+.model{padding:34px 30px;border-left:1px solid rgba(194,164,92,.35)}
+.model:first-child{border-left:none}
+.m-badge{
+  display:none;font-family:'Marcellus',serif;font-size:10px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--ink);background:var(--brass);
+  padding:5px 10px;margin-bottom:16px;
+}
+.model.match .m-badge{display:inline-block}
+.m-k{
+  font-family:'Marcellus',serif;font-size:11px;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--brass);display:block;margin-bottom:10px;
+}
+.model h3{
+  font-family:'Cormorant Garamond',serif;font-weight:500;font-size:23px;
+  color:var(--ivory);line-height:1.25;
+}
+.m-sub{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:16px;color:var(--sage);margin-top:4px;
+}
+.model p.m-body{margin-top:14px;font-size:14px;color:var(--body-light)}
+@media(max-width:900px){.model-grid{grid-template-columns:1fr}.model{border-left:none;border-top:1px solid rgba(194,164,92,.35)}.model:first-child{border-top:none}}
+.model-disc{margin-top:22px;font-size:13px;color:var(--sage);max-width:720px}
+
+.plan-close{margin-top:72px;border-top:1px solid rgba(194,164,92,.25);padding-top:52px}
+.plan-close h3{
+  font-family:'Cormorant Garamond',serif;font-weight:500;
+  font-size:clamp(26px,3.6vw,36px);color:var(--ivory);max-width:620px;
+}
+.plan-close p{margin-top:14px;font-size:15.5px;color:var(--body-light);max-width:560px}
+.ctas{margin-top:36px;display:flex;gap:16px;flex-wrap:wrap}
+
+/* ---------- closed-door opportunities ---------- */
+.charter-band{background:var(--ivory-2);padding:88px 0}
+.charter-band p.body{margin-top:22px;max-width:660px;font-size:16px;color:#4A5850}
+.charter-band p.body b{color:var(--body-dark);font-weight:500}
+
+/* ---------- letters strip ---------- */
+.sub-strip{padding:76px 0;border-top:1px solid var(--rule)}
+.sub-title{
+  font-family:'Marcellus',serif;font-size:12px;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--brass-dim);margin-bottom:8px;
+}
+.sub-copy{font-size:14.5px;color:#4A5850;margin-bottom:20px;max-width:560px}
+.sub-row{display:flex;gap:14px;flex-wrap:wrap;max-width:560px}
+.sub-row input{
+  flex:1;min-width:220px;background:transparent;border:none;
+  border-bottom:1px solid var(--rule);padding:13px 2px;
+  font-family:'Inter',sans-serif;font-size:16px;color:var(--body-dark);border-radius:0;
+}
+.sub-row input::placeholder{color:#8A968E}
+.sub-row input:focus{outline:none;border-bottom-color:var(--brass)}
+.sub-msg{margin-top:16px;font-size:14px;color:var(--brass-dim)}
+.err{border-bottom-color:#C96A5A!important}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink);padding:72px 0 56px;border-top:1px solid rgba(194,164,92,.25)}
+.foot-mark{
+  font-family:'Marcellus',serif;font-size:13px;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--brass);margin-bottom:34px;
+}
+.compliance p{font-size:12.5px;color:#7E8F85;line-height:1.7;max-width:820px;margin-bottom:14px}
+.compliance b{color:#A9B8AE;font-weight:500}
+.foot-line{
+  margin-top:44px;padding-top:24px;border-top:1px solid rgba(194,164,92,.18);
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+  font-size:12px;color:#5F7168;
+}
+.foot-line a{color:inherit;text-decoration:none}
+</style>
+<noscript><style>.reveal{opacity:1 !important;transform:none !important}</style></noscript>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <a class="wordmark" href="/">The Legacy <span>Circle</span></a>
+    <div class="nav-links">
+      <a href="/#charter">Charter</a>
+      <a class="here" href="/library/">The Library</a>
+      <a class="nav-cta" href="/#invitation">Request an invitation</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ================= MASTHEAD ================= -->
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow reveal">The Library · The Legacy Circle</div>
+    <h1 class="reveal">Where should your <em>next rupee</em> go?</h1>
+    <p class="lede reveal">The Library takes you through various opportunities in plain language as per your preference. You pick between Growth, Income and Asset-backed. The shelf does the rest.</p>
+    <div class="claims reveal">
+      <div class="claim">
+        <b>Growth</b>
+        <p>Own it. A share is a piece of the business and its future.</p>
+      </div>
+      <div class="claim">
+        <b>Income</b>
+        <p>Lend to it. A bond is a loan: the business pays interest and returns your money.</p>
+      </div>
+      <div class="claim">
+        <b>Asset-backed</b>
+        <p>Finance it. A leased machine, an invoice, a building: the business pays for the use of your capital.</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= THE PERSONALISATION ================= -->
+<section class="cal" id="personalise">
+  <div class="wrap">
+    <div class="eyebrow reveal">The Personalisation</div>
+    <h2 class="reveal">Choose your preference for your next investment.</h2>
+    <p class="lede reveal">Three questions, and the shelf below rearranges itself.</p>
+
+    <div class="cal-grid reveal">
+      <div class="cfield">
+        <label for="c-time">How long can you stay invested?</label>
+        <select id="c-time">
+          <option value="" selected>No preference</option>
+          <option value="lt1">Less than 1 year</option>
+          <option value="y13">1 to 3 years</option>
+          <option value="y37">3 to 7 years</option>
+          <option value="gt7">More than 7 years</option>
+        </select>
+      </div>
+      <div class="cfield">
+        <label for="c-corpus">How much are you looking to deploy?</label>
+        <select id="c-corpus">
+          <option value="" selected>No preference</option>
+          <option value="lt50">Less than ₹50 lakh</option>
+          <option value="m50">₹50 lakh to ₹2 crore</option>
+          <option value="gt2">More than ₹2 crore</option>
+        </select>
+      </div>
+      <div class="cfield">
+        <label for="c-route">Evaluate yourself, or leave it to professionals?</label>
+        <select id="c-route">
+          <option value="" selected>No preference</option>
+          <option value="direct">I evaluate myself</option>
+          <option value="managed">I leave it to professionals</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="cal-out reveal">
+      <span class="cal-line" id="cal-line" aria-live="polite">Showing the full shelf · 45 options across three wings.</span>
+      <button class="cal-reset hid" id="cal-reset" type="button">Reset</button>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE SHELF ================= -->
+<section class="shelf" id="shelf">
+  <div class="wrap">
+    <div class="eyebrow reveal">The Shelf</div>
+    <h2 class="reveal">What exists for this window.</h2>
+    <p class="lede reveal">Every option on the shelf, grouped by what it asks of you. Tap a row to read what it is and what to watch. Where a lesson is live, it is linked.</p>
+
+    <div id="shelf-root" class="reveal">
+      <noscript><p class="wing-empty">The shelf needs JavaScript to rearrange itself. Please enable it to browse the options.</p></noscript>
+    </div>
+
+    <p class="shelf-disc reveal">The shelf shows what exists for a window, not what you should buy. Every row carries risk and several can lose capital. Minimums, lock-ins and tax treatment change; confirm them before you act. Nothing here is a recommendation.</p>
+
+    <div class="shelf-note reveal">
+      <div class="shelf-note-in">
+        <p>The shelf fills weekly. Lessons attach to rows as they publish, and <a href="#letters">the Letters</a> announce each new one the morning it goes live.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE EXECUTION ================= -->
+<section class="plan-band on-green" id="execution">
+  <div class="wrap">
+    <div class="eyebrow reveal">The Execution</div>
+    <h2 class="reveal">Knowledge needs action to give the desired results.</h2>
+    <p class="lede reveal">Knowing how to read a bond is craft. Knowing how much bond your life needs is judgment. We help you turn that knowledge into a portfolio.</p>
+
+    <div class="phil-row reveal" id="lessons">
+      <div class="phil" data-lesson>
+        <span class="r-k">The philosophy</span>
+        <h4>Your relationship with money</h4>
+        <p>Lessons from billionaires on how they have built a legacy.</p>
+        <span class="l-meta">Lesson in preparation</span>
+      </div>
+      <a class="phil" href="/library/three-bucket-framework.html" data-lesson>
+        <span class="r-k">The Asset Allocation</span>
+        <h4>The three-bucket framework</h4>
+        <p>Manage risk and decide how much to invest. The single most useful structure in personal investing.</p>
+        <span class="l-meta">Lesson live · 7 minute read</span>
+      </a>
+      <a class="phil" href="/library/how-to-read-a-bond.html" data-lesson data-route="direct">
+        <span class="r-k">The Evaluation</span>
+        <h4>How to read a bond</h4>
+        <p>The five questions that separate a good yield from a priced-in problem.</p>
+        <span class="l-meta">Lesson live · 8 minute read</span>
+      </a>
+    </div>
+
+    <div class="model-grid reveal" id="models">
+      <div class="model" data-corpus="lt50">
+        <span class="m-badge">Closest to your preference</span>
+        <span class="m-k">Under ₹50 lakh</span>
+        <h3>The physician building the first crore</h3>
+        <p class="m-sub">Salary surplus, steady hands.</p>
+        <p class="m-body">Three years of near-term goals sit in a short ladder of bonds and debt funds. The decade money compounds in equity funds on a monthly discipline. A small invoice-discounting allocation gives the first taste of financing a business, on tenures measured in weeks. Structure first, selection second.</p>
+      </div>
+      <div class="model" data-corpus="m50">
+        <span class="m-badge">Closest to your preference</span>
+        <span class="m-k">₹50 lakh to ₹2 crore</span>
+        <h3>The surgeon with no evenings</h3>
+        <p class="m-sub">The practice absorbs the hours.</p>
+        <p class="m-body">The school-fee years are covered by a ladder of debt funds. Growth runs through equity funds and a PMS mandate, so the selection is somebody's full-time job. One asset-leasing programme pays a quarterly income the household can feel. Time is an allocation decision too.</p>
+      </div>
+      <div class="model" data-corpus="gt2">
+        <span class="m-badge">Closest to your preference</span>
+        <span class="m-k">Above ₹2 crore</span>
+        <h3>The promoter after the exit</h3>
+        <p class="m-sub">Concentration, unwound on purpose.</p>
+        <p class="m-body">A bond ladder pays the household for five years without selling anything. Listed equity carries the compounding; a venture fund position is sized so a zero changes nothing. Leasing and trade financing add income that ignores the index. The second fortune is built slower than the first, deliberately.</p>
+      </div>
+    </div>
+    <p class="model-disc reveal">Illustrative constructions for education, not recommendations. Your numbers, your taxes and your temperament change everything · which is rather the point.</p>
+
+    <div class="plan-close reveal">
+      <h3>A library teaches. Action compounds.</h3>
+      <p>If you want the construction done for your numbers, begin the conversation. The first one is about your goals.</p>
+      <div class="ctas">
+        <a class="btn solid" href="/#invitation">Begin the conversation</a>
+        <a class="btn" href="/#admission">How admission works</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE CLOSED-DOOR OPPORTUNITIES ================= -->
+<section class="charter-band">
+  <div class="wrap">
+    <div class="eyebrow reveal">The Closed-Door Opportunities</div>
+    <h2 class="reveal">Some opportunities never reach the market.</h2>
+    <p class="body reveal">Negotiated blocks in listed companies. Early allocations in startups and venture funds. Asset leasing and trade financing mandates structured for a few balance sheets at a time. These travel as one-page memos to <b>Charter Members</b> first, each stating the risks plainly and naming who should decline. The Library teaches you to judge them. The Charter is how they reach you.</p>
+    <div class="ctas reveal" style="margin-top:34px">
+      <a class="btn solid" href="/#invitation">Request an invitation</a>
+      <a class="btn" href="/#charter">Read the Charter</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE LETTERS ================= -->
+<section class="sub-strip" id="letters">
+  <div class="wrap">
+    <p class="sub-title">The Legacy Letters</p>
+    <p class="sub-copy">Every new lesson, delivered weekly to your inbox. No products, no tips, no noise.</p>
+    <div class="sub-row" data-sub-form>
+      <input type="email" placeholder="Your email" aria-label="Email for The Legacy Letters" autocomplete="email">
+      <button class="btn solid" type="button">Subscribe</button>
+    </div>
+    <p class="sub-msg" hidden>Welcome to the Letters. Your first lesson reaches you this week.</p>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-mark">The Legacy Circle</div>
+    <div class="compliance">
+      <p><b>Education only.</b> The Library is educational material. Nothing here is investment advice, research, a recommendation, or an offer or solicitation to buy any security or product. The shelf describes categories of investment that exist; it does not assess suitability for any person. All examples and constructions are illustrative. Please consult your own advisers before acting.</p>
+      <p><b>Who we are.</b> The Legacy Circle and Delego Capital are brands of Affinity Merchants Private Limited, an AMFI Registered Mutual Fund Distributor, ARN-168888.</p>
+      <p><b>Risk.</b> Mutual fund investments are subject to market risks. Read all scheme related documents carefully. Bonds carry credit, liquidity and interest-rate risk. PMS, AIF, unlisted securities, startup investments, asset leasing, invoice financing and real estate carry higher risk, may be illiquid, and can result in loss of capital. Past performance is not indicative of future returns.</p>
+      <p><b>Grievance.</b> Write to info@thelegacycircle.in. If unresolved, complaints may be escalated to the relevant regulator or on SEBI SCORES at scores.sebi.gov.in.</p>
+    </div>
+    <div class="foot-line">
+      <span>© 2026 The Legacy Circle. All rights reserved.</span>
+      <a href="https://delegocapital.com">Delego Capital ↗</a>
+    </div>
+  </div>
+</footer>
+
+<script src="/config.js"></script>
+<script>
+// The Legacy Circle · Library page script
+
+// Scroll reveal (respects reduced motion)
+(function(){
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const els = document.querySelectorAll('.reveal');
+  if (prefersReduced || !('IntersectionObserver' in window)) {
+    els.forEach(e => e.classList.add('in'));
+  } else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { threshold: 0.12 });
+    els.forEach(e => io.observe(e));
+  }
+})();
+
+/* ============================================================
+   THE SHELF · EDIT HERE
+   One object per option. Keys:
+     w      wing: growth | income | asset
+     g      group caption shown under the name
+     n      option name
+     v      volatility: Low | Mid | High
+     c      credit default risk: Low | Mid | High
+     t      horizons it qualifies for: lt1 | y13 | y37 | gt7
+     m      deployment bands: lt50 | m50 | gt2
+     r      route: direct | managed
+     what   what it is (one or two sentences)
+     watch  what to watch (one or two sentences)
+     note   optional minimum or wrapper note
+     lesson optional {href, title, meta} once a lesson is live
+   To attach a new lesson, add a lesson object to the row. Nothing else changes.
+   ============================================================ */
+const T_ALL = ['lt1','y13','y37','gt7'];
+const M_ALL = ['lt50','m50','gt2'];
+const M_50UP = ['m50','gt2'];
+const BOND_LESSON = { href:'/library/how-to-read-a-bond.html', title:'How to read a bond', meta:'Lesson live · 8 minute read' };
+const AIF_NOTE = 'AIF route · ₹1 crore minimum unless you are an accredited investor.';
+
+const OPTIONS = [
+  /* ---------------- GROWTH · own it ---------------- */
+  { w:'growth', g:'Equity', n:'Listed equity', v:'High', c:'High', t:['gt7'], m:M_ALL, r:'direct',
+    what:'Shares of exchange-listed companies that you research, select and hold yourself.',
+    watch:'A framework for judging a business, never a tip. Concentration in a few names is the silent risk.' },
+  { w:'growth', g:'Equity', n:'Unlisted equity', v:'High', c:'High', t:['gt7'], m:M_ALL, r:'direct',
+    what:'Shares of private companies bought in secondary transactions before any listing.',
+    watch:'Pricing is opaque and the exit depends on a listing that may never come.' },
+  { w:'growth', g:'Equity', n:'Businesses & startups', v:'High', c:'High', t:['gt7'], m:M_50UP, r:'direct',
+    what:'Direct ownership in a private company, usually through an angel round or a syndicate.',
+    watch:'Most early companies fail. Size each position so that a zero changes nothing about your life.' },
+  { w:'growth', g:'Equity · managed', n:'Equity mutual funds', v:'High', c:'Mid', t:['gt7'], m:M_ALL, r:'managed',
+    what:'A manager builds a portfolio of listed companies and you own units of it.',
+    watch:'The expense ratio, and how the fund behaved in its worst years rather than its best one.' },
+  { w:'growth', g:'Equity · managed', n:'Portfolio Management Services', v:'High', c:'Mid', t:['gt7'], m:M_50UP, r:'managed',
+    what:'A professional runs a separate portfolio inside your own demat account under a stated mandate.',
+    watch:'Fees are higher than funds and every trade the manager makes is a tax event in your name.',
+    note:'₹50 lakh minimum.' },
+  { w:'growth', g:'Equity · managed', n:'Venture capital funds', v:'High', c:'High', t:['gt7'], m:M_50UP, r:'managed',
+    what:'A Category I or II AIF that invests your capital across early-stage companies.',
+    watch:'Capital is called over several years and returns, if any, arrive after a decade.',
+    note:AIF_NOTE },
+  { w:'growth', g:'Equity · managed', n:'Private equity funds', v:'High', c:'High', t:['gt7'], m:M_50UP, r:'managed',
+    what:'An AIF that buys meaningful stakes in mature private companies and works to grow them.',
+    watch:'Illiquid for the life of the fund. Read how the manager exited the last vintage.',
+    note:AIF_NOTE },
+  { w:'growth', g:'Hybrid fund', n:'Aggressive hybrid fund', v:'High', c:'Low', t:['y37','gt7'], m:M_ALL, r:'managed',
+    what:'Sixty-five to eighty percent equity with the rest in debt, inside one scheme.',
+    watch:'It behaves mostly like equity. The debt portion is a cushion, not a floor.' },
+  { w:'growth', g:'Hybrid fund', n:'Balanced advantage fund', v:'Mid', c:'Mid', t:['y13','y37','gt7'], m:M_ALL, r:'managed',
+    what:'Moves between equity and debt using the fund house\u2019s own valuation model.',
+    watch:'Every house runs a different model. Look at how the fund behaved in the last drawdown.' },
+  { w:'growth', g:'Commodity', n:'Gold & silver funds or ETFs', v:'Mid', c:'Low', t:['y13','y37','gt7'], m:M_ALL, r:'direct',
+    what:'Exposure to the metal through a fund unit or an exchange-traded unit, with no locker involved.',
+    watch:'Tracking cost, and the premium the unit trades at over the metal price on the exchange.' },
+  { w:'growth', g:'Commodity', n:'Gold & silver coins and bars', v:'Mid', c:'Low', t:['y13','y37','gt7'], m:M_ALL, r:'direct',
+    what:'The physical metal in your own custody.',
+    watch:'Making charges, purity certification, storage, and the spread you lose when you sell.' },
+
+  /* ---------------- INCOME · lend to it ---------------- */
+  { w:'income', g:'Bank', n:'Bank fixed deposits', v:'Low', c:'Low', t:['lt1'], m:M_ALL, r:'direct',
+    what:'You lend a scheduled bank money for a fixed tenure at a fixed rate.',
+    watch:'Deposit insurance covers ₹5 lakh per depositor per bank. Interest is taxed at your slab and early exit costs a penalty.' },
+  { w:'income', g:'Company deposit', n:'Corporate fixed deposits', v:'Low', c:'Low', t:['lt1','y13','y37'], m:M_ALL, r:'direct',
+    what:'A fixed deposit with a company or an NBFC rather than a bank.',
+    watch:'No deposit insurance. The rating and the parent balance sheet are the whole story.' },
+  { w:'income', g:'Debt fund', n:'Overnight fund', v:'Low', c:'Low', t:['lt1'], m:M_ALL, r:'managed',
+    what:'A debt fund that lends for one day at a time, so its value barely moves.',
+    watch:'Returns track the overnight rate. It is a parking place, not an investment.' },
+  { w:'income', g:'Debt fund', n:'Liquid fund', v:'Low', c:'Low', t:['lt1'], m:M_ALL, r:'managed',
+    what:'Lends to companies and banks for up to 91 days. Money is usually back with you in a day.',
+    watch:'A graded exit load applies in the first seven days. Check the credit quality of what it holds.' },
+  { w:'income', g:'Debt fund', n:'Money market fund', v:'Low', c:'Low', t:['lt1'], m:M_ALL, r:'managed',
+    what:'Debt instruments maturing within a year, a step beyond liquid on tenure.',
+    watch:'Slightly more sensitivity to rate moves than liquid. Read the rating mix of the portfolio.' },
+  { w:'income', g:'Debt fund', n:'Ultra short duration fund', v:'Low', c:'Low', t:['lt1'], m:M_ALL, r:'managed',
+    what:'A portfolio maturing in roughly three to six months.',
+    watch:'Some schemes stretch credit quality for yield. The name promises duration, not safety.' },
+  { w:'income', g:'Debt fund', n:'Low duration fund', v:'Low', c:'Low', t:['lt1'], m:M_ALL, r:'managed',
+    what:'A six to twelve month portfolio, one rung above ultra short.',
+    watch:'The same credit check applies. Look at who the fund is actually lending to.' },
+  { w:'income', g:'Debt fund', n:'Short duration fund', v:'Low', c:'Low', t:['y13'], m:M_ALL, r:'managed',
+    what:'A one to three year portfolio of corporate and government paper.',
+    watch:'Rate moves show up in the value. Hold at least as long as the fund\u2019s stated duration.' },
+  { w:'income', g:'Debt fund', n:'Corporate bond fund', v:'Low', c:'Low', t:['y13'], m:M_ALL, r:'managed',
+    what:'At least eighty percent in the highest-rated corporate paper.',
+    watch:'A rating is a snapshot. Concentration in a handful of issuers matters more.' },
+  { w:'income', g:'Debt fund', n:'Banking & PSU fund', v:'Low', c:'Low', t:['y13'], m:M_ALL, r:'managed',
+    what:'Lends mostly to banks and public sector companies.',
+    watch:'Duration can drift over time. Check the average maturity before you buy.' },
+  { w:'income', g:'Debt fund', n:'Credit risk fund', v:'Low', c:'Mid', t:['y13'], m:M_ALL, r:'managed',
+    what:'Lends deliberately to lower-rated companies in exchange for a higher coupon.',
+    watch:'The higher rate is the price of default risk. Illiquidity during a stress event is the real danger.' },
+  { w:'income', g:'Debt fund', n:'Medium duration fund', v:'Mid', c:'Low', t:['y13'], m:M_ALL, r:'managed',
+    what:'Three to four year portfolios, more sensitive to interest rates.',
+    watch:'Credit quality varies widely across schemes in this category.' },
+  { w:'income', g:'Debt fund', n:'Floater fund', v:'Low', c:'Low', t:['y13'], m:M_ALL, r:'managed',
+    what:'Bonds whose coupon resets with market rates.',
+    watch:'Works when rates rise. The reset lag can hurt when they fall.' },
+  { w:'income', g:'Debt fund', n:'Target maturity fund', v:'Low', c:'Low', t:['y37'], m:M_ALL, r:'managed',
+    what:'A passive bond ladder that winds up on a fixed date. Hold to that date and the outcome is largely known.',
+    watch:'Selling before maturity brings rate risk straight back.' },
+  { w:'income', g:'Debt fund', n:'Medium to long duration fund', v:'High', c:'Low', t:['y37','gt7'], m:M_ALL, r:'managed',
+    what:'Four to seven year portfolios, the most rate-sensitive of the mainstream debt funds.',
+    watch:'Gains when rates fall, losses when they rise. Hold the full duration.' },
+  { w:'income', g:'Debt fund', n:'Gilt fund', v:'High', c:'Low', t:['y37','gt7'], m:M_ALL, r:'managed',
+    what:'Only government securities, of any maturity.',
+    watch:'No credit risk at all, and full interest-rate risk.' },
+  { w:'income', g:'Debt fund', n:'Gilt fund · 10-year constant duration', v:'High', c:'Low', t:['y37','gt7'], m:M_ALL, r:'managed',
+    what:'Government securities held at a steady ten-year duration.',
+    watch:'A pure position on the ten-year yield. Volatile for a debt fund.' },
+  { w:'income', g:'Debt fund', n:'Dynamic bond fund', v:'High', c:'Low', t:['y37','gt7'], m:M_ALL, r:'managed',
+    what:'The manager changes duration with their own view on rates.',
+    watch:'You are paying for a rate call. Check the record across more than one cycle.' },
+  { w:'income', g:'Bonds', n:'Government & RBI bonds · short and medium tenor', v:'Low', c:'Low', t:T_ALL, m:M_ALL, r:'direct',
+    what:'You lend to the sovereign, the strongest credit in the country.',
+    watch:'The price still moves with rates. Buying through RBI Retail Direct avoids brokerage.',
+    lesson:BOND_LESSON },
+  { w:'income', g:'Bonds', n:'Government & RBI bonds · long-dated', v:'High', c:'Low', t:['y37','gt7'], m:M_ALL, r:'direct',
+    what:'Long tenor sovereign paper, zero coupon or coupon bearing, including RBI floating rate bonds with a seven-year lock-in.',
+    watch:'Price swings are large over the tenor and the lock-in on RBI bonds is real.',
+    lesson:BOND_LESSON },
+  { w:'income', g:'Bonds', n:'PSU & state development bonds', v:'Low', c:'Low', t:T_ALL, m:M_ALL, r:'direct',
+    what:'Bonds issued by public sector companies and state governments.',
+    watch:'A little more yield than the centre for a little more risk. Check liquidity before you need to sell.',
+    lesson:BOND_LESSON },
+  { w:'income', g:'Bonds', n:'Corporate bonds & NCDs', v:'Low', c:'Low', t:T_ALL, m:M_ALL, r:'direct',
+    what:'Direct lending to a single company, listed on the exchange or by private placement.',
+    watch:'The rating, the security cover, and whether the coupon pays you for the risk of that one borrower.',
+    lesson:BOND_LESSON },
+  { w:'income', g:'Government scheme', n:'Public Provident Fund', v:'Low', c:'Low', t:['gt7'], m:M_ALL, r:'direct',
+    what:'A fifteen-year government scheme with tax-free interest and a ₹1.5 lakh yearly ceiling.',
+    watch:'Partial withdrawal only from the seventh year. The ceiling makes it a habit, not a home for surplus.' },
+  { w:'income', g:'Government scheme', n:'National Savings Certificate', v:'Low', c:'Low', t:['gt7'], m:M_ALL, r:'direct',
+    what:'A five-year post office certificate at a fixed rate, with interest reinvested.',
+    watch:'Interest is taxable each year even though you receive it all at the end.' },
+  { w:'income', g:'Hybrid fund', n:'Arbitrage fund', v:'Low', c:'Low', t:['lt1'], m:M_ALL, r:'managed',
+    what:'Buys a stock and sells its future at the same time, earning the spread. Taxed like equity.',
+    watch:'Spreads shrink when markets are calm and returns can dip below liquid funds in some quarters.' },
+  { w:'income', g:'Hybrid fund', n:'Conservative hybrid fund', v:'Mid', c:'Mid', t:['y13','y37','gt7'], m:M_ALL, r:'managed',
+    what:'Mostly debt with a small equity sleeve.',
+    watch:'The equity sleeve sets the mood of the fund. Check its size before you assume it is calm.' },
+  { w:'income', g:'Hybrid fund', n:'Equity savings fund', v:'Mid', c:'Mid', t:['y13','y37','gt7'], m:M_ALL, r:'managed',
+    what:'Equity, arbitrage and debt in roughly equal parts, taxed like equity.',
+    watch:'Modest ambition by design. Do not expect equity-like growth from it.' },
+
+  /* ---------------- ASSET-BACKED · finance it ---------------- */
+  { w:'asset', g:'Real estate', n:'REITs', v:'Mid', c:'Low', t:['y37','gt7'], m:M_ALL, r:'direct',
+    what:'Listed trusts that own income-producing offices and malls. Most of the rent is paid out to you.',
+    watch:'Distributions fall when occupancy falls, and the units trade like stocks.' },
+  { w:'asset', g:'Infrastructure', n:'InvITs', v:'Mid', c:'Low', t:['y37','gt7'], m:M_ALL, r:'direct',
+    what:'Listed trusts that own roads, transmission lines and pipelines and pass on the tolls and tariffs.',
+    watch:'Long concessions and regulated tariffs on one side, the debt sitting on the trust on the other.' },
+  { w:'asset', g:'Leasing', n:'Asset leasing', v:'Mid', c:'High', t:['y37','gt7'], m:M_50UP, r:'direct',
+    what:'You own equipment or vehicles that a business rents from you on a contract.',
+    watch:'What the asset is worth if the lessee walks away. The platform\u2019s diligence is your diligence.' },
+  { w:'asset', g:'Trade financing', n:'Invoice discounting', v:'Mid', c:'High', t:['lt1'], m:M_ALL, r:'direct',
+    what:'You finance an invoice a business has already raised. Its customer\u2019s payment repays you within weeks.',
+    watch:'Single-invoice risk is binary. The platform\u2019s recovery record is the number to ask for.' },
+  { w:'asset', g:'Private credit', n:'Venture debt', v:'Mid', c:'High', t:['gt7'], m:M_50UP, r:'managed',
+    what:'Loans to funded startups, made through an AIF, often with a small equity kicker.',
+    watch:'Defaults in this space arrive in clusters, usually when funding dries up.',
+    note:AIF_NOTE },
+  { w:'asset', g:'Private credit', n:'Realty debt', v:'Mid', c:'High', t:['gt7'], m:M_50UP, r:'managed',
+    what:'Lending to developers against project cashflows, through an AIF.',
+    watch:'Approvals and sales velocity decide whether you are repaid on time.',
+    note:AIF_NOTE },
+  { w:'asset', g:'Real estate', n:'Rental real estate', v:'Low', c:'Low', t:['gt7'], m:M_50UP, r:'direct',
+    what:'A property you own and let out.',
+    watch:'Yields are low, costs are lumpy and the money is locked. The land beneath is the long-term case.' }
+];
+
+const WINGS = [
+  { id:'growth', roman:'I.', name:'Growth', tag:'Claims that compound. You own a piece of the business.' },
+  { id:'income', roman:'II.', name:'Income', tag:'Claims that pay. You lend, and the business pays you on a schedule.' },
+  { id:'asset',  roman:'III.', name:'Asset-backed', tag:'Claims on things. A machine, an invoice, a building pays for the use of your capital.' }
+];
+
+// ---------- render the shelf once ----------
+(function(){
+  const root = document.getElementById('shelf-root');
+  if (!root) return;
+  const chev = '<span class="chev" aria-hidden="true"><svg width="12" height="8" viewBox="0 0 12 8"><path d="M1 1l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></span>';
+  const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+  WINGS.forEach(w => {
+    const wing = document.createElement('div');
+    wing.className = 'wing';
+    wing.dataset.wing = w.id;
+    wing.dataset.open = 'true';
+    const total = OPTIONS.filter(o => o.w === w.id).length;
+    wing.innerHTML =
+      '<button class="wing-head" type="button" aria-expanded="true">' +
+        '<span class="wing-roman">' + w.roman + '</span>' +
+        '<span class="wing-title">' + w.name + '<small>' + w.tag + '</small></span>' +
+        '<span class="wing-count" data-count>' + total + ' of ' + total + '</span>' +
+        chev +
+      '</button>' +
+      '<div class="rows"></div>';
+    const rows = wing.querySelector('.rows');
+
+    OPTIONS.filter(o => o.w === w.id).forEach((o, i) => {
+      const row = document.createElement('div');
+      row.className = 'row';
+      row.dataset.open = 'false';
+      row.dataset.t = o.t.join(',');
+      row.dataset.m = o.m.join(',');
+      row.dataset.r = o.r;
+      const id = w.id + '-' + i;
+      row.innerHTML =
+        '<button class="row-head" type="button" aria-expanded="false" aria-controls="' + id + '">' +
+          '<span><span class="r-name">' + esc(o.n) + '</span><span class="r-group">' + esc(o.g) + '</span></span>' +
+          '<span class="r-pills">' +
+            '<span class="pill ' + o.v.toLowerCase() + '">Volatility · ' + o.v + '</span>' +
+            '<span class="pill ' + o.c.toLowerCase() + '">Credit risk · ' + o.c + '</span>' +
+            '<span class="pill route">' + (o.r === 'direct' ? 'Direct' : 'Managed') + '</span>' +
+          '</span>' +
+          chev +
+        '</button>' +
+        '<div class="row-body" id="' + id + '">' +
+          '<span class="rb-k">What it is</span><p>' + esc(o.what) + '</p>' +
+          '<span class="rb-k">What to watch</span><p>' + esc(o.watch) + '</p>' +
+          (o.note ? '<p class="rb-note">' + esc(o.note) + '</p>' : '') +
+          (o.lesson ? '<a class="lesson-link" href="' + o.lesson.href + '">' + esc(o.lesson.title) + '</a><span class="l-meta">' + esc(o.lesson.meta) + '</span>' : '') +
+        '</div>';
+      rows.appendChild(row);
+    });
+
+    const empty = document.createElement('p');
+    empty.className = 'wing-empty hid';
+    empty.textContent = 'Nothing on this wing fits this window.';
+    rows.appendChild(empty);
+    root.appendChild(wing);
+  });
+
+  // Row expand / collapse and wing collapse
+  root.addEventListener('click', e => {
+    const head = e.target.closest('.row-head');
+    if (head){
+      const row = head.parentElement;
+      const open = row.dataset.open !== 'true';
+      row.dataset.open = open ? 'true' : 'false';
+      head.setAttribute('aria-expanded', open ? 'true' : 'false');
+      return;
+    }
+    const wh = e.target.closest('.wing-head');
+    if (wh){
+      const wing = wh.parentElement;
+      const open = wing.dataset.open !== 'true';
+      wing.dataset.open = open ? 'true' : 'false';
+      wh.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+  });
+})();
+
+// ---------- the personalisation ----------
+(function(){
+  const time   = document.getElementById('c-time');
+  const corpus = document.getElementById('c-corpus');
+  const route  = document.getElementById('c-route');
+  const line   = document.getElementById('cal-line');
+  const reset  = document.getElementById('cal-reset');
+  const models = document.getElementById('models');
+  if (!time || !corpus || !route) return;
+  const total = OPTIONS.length;
+
+  function has(list, v){ return !v || list.split(',').indexOf(v) !== -1; }
+
+  function personalise(){
+    const t = time.value, m = corpus.value, r = route.value;
+    const counts = { growth:0, income:0, asset:0 };
+    let open = 0;
+
+    // Shelf rows: an option shows only when it clears every answered question
+    document.querySelectorAll('#shelf-root .row').forEach(row => {
+      const show = has(row.dataset.t, t) && has(row.dataset.m, m) && (!r || row.dataset.r === r);
+      row.classList.toggle('hid', !show);
+      if (show){ open++; counts[row.closest('.wing').dataset.wing]++; }
+    });
+    document.querySelectorAll('#shelf-root .wing').forEach(wing => {
+      const id = wing.dataset.wing;
+      const tot = OPTIONS.filter(o => o.w === id).length;
+      wing.querySelector('[data-count]').textContent = counts[id] + ' of ' + tot;
+      wing.querySelector('.wing-empty').classList.toggle('hid', counts[id] > 0);
+    });
+
+    // Execution lessons: a lesson hides only when it carries a tag that conflicts
+    document.querySelectorAll('[data-lesson]').forEach(card => {
+      const ct = card.dataset.time, cm = card.dataset.corpus, cr = card.dataset.route;
+      const show = (!ct || !t || ct.split(',').indexOf(t) !== -1) &&
+                   (!cm || !m || cm.split(',').indexOf(m) !== -1) &&
+                   (!cr || !r || cr === r);
+      card.classList.toggle('hid', !show);
+    });
+
+    // Model constructions: badge and lead with the matching band
+    if (models){
+      models.querySelectorAll('.model').forEach(x => x.classList.remove('match'));
+      if (m){
+        const match = models.querySelector('.model[data-corpus="' + m + '"]');
+        if (match){ match.classList.add('match'); models.prepend(match); }
+      }
+    }
+
+    // Result line
+    const untouched = !t && !m && !r;
+    line.textContent = untouched
+      ? 'Showing the full shelf · ' + total + ' options across three wings.'
+      : open + ' options open · ' + counts.growth + ' Growth · ' + counts.income + ' Income · ' + counts.asset + ' Asset-backed.';
+    reset.classList.toggle('hid', untouched);
+  }
+
+  [time, corpus, route].forEach(el => el.addEventListener('change', personalise));
+  reset.addEventListener('click', () => { time.value = ''; corpus.value = ''; route.value = ''; personalise(); });
+})();
+
+// ---------- Supabase (config in /config.js; degrades gracefully until keys are pasted) ----------
+async function tlcInsert(table, row){
+  const c = window.TLC_CONFIG || {};
+  if (!c.SUPABASE_URL || !c.SUPABASE_ANON_KEY) return { ok:true, offline:true };
+  try{
+    const r = await fetch(c.SUPABASE_URL + '/rest/v1/' + table, {
+      method:'POST',
+      headers:{
+        'apikey': c.SUPABASE_ANON_KEY,
+        'Authorization': 'Bearer ' + c.SUPABASE_ANON_KEY,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify(row)
+    });
+    return { ok: r.ok || r.status === 409 }; // 409 = already subscribed, treat as success
+  }catch(e){ return { ok:false }; }
+}
+
+// Legacy Letters subscribe (any element carrying data-sub-form)
+document.querySelectorAll('[data-sub-form]').forEach(formEl => {
+  const input = formEl.querySelector('input');
+  const btn = formEl.querySelector('button');
+  const msg = formEl.parentElement.querySelector('.sub-msg');
+  btn.addEventListener('click', async () => {
+    const email = (input.value || '').trim().toLowerCase();
+    const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    input.classList.toggle('err', !valid);
+    if (!valid) return;
+    btn.disabled = true; btn.textContent = 'Joining…';
+    const res = await tlcInsert('subscribers', { email, source: 'library' });
+    if (!res.ok){
+      btn.disabled = false; btn.textContent = 'Subscribe';
+      alert('Could not subscribe just now. Please try again, or write to info@thelegacycircle.in.');
+      return;
+    }
+    formEl.style.display = 'none';
+    if (msg) msg.hidden = false;
+  });
+});
+</script>
+</body>
+</html>
