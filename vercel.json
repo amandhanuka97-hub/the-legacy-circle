@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    { "source": "/library/plan", "destination": "/library/", "permanent": true },
+    { "source": "/library/plan/:path*", "destination": "/library/", "permanent": true },
+    { "source": "/library/execute", "destination": "/library/", "permanent": true },
+    { "source": "/library/execute/:path*", "destination": "/library/", "permanent": true },
+    { "source": "/library/maintain", "destination": "/library/", "permanent": true },
+    { "source": "/library/maintain/:path*", "destination": "/library/", "permanent": true }
+  ]
+}
